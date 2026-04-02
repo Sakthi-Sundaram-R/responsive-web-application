@@ -1,0 +1,283 @@
+/* mu.css */
+:root {
+    --primary: #8c6f4e;
+    --primary-light: #b89c7d;
+    --primary-dark: #5c4d40;
+    --bg-light: #f4efe6;
+    --bg-dark: #2b241e;
+    --text-dark: #3e352c;
+    --gold: #d4af37;
+    --white: #ffffff;
+    --body-font: 'Poppins', sans-serif;
+    --head-font: 'Playfair Display', serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--body-font);
+    background: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* HEADER & TITLES */
+.page-header {
+    background: linear-gradient(rgba(43, 36, 30, 0.8), rgba(43, 36, 30, 0.8)), 
+                url('https://uniqueantiquecollection.com/wp-content/uploads/2023/03/18093F4F-6F81-4D7C-A06A-105B2712E4C3-scaled.jpeg') center/cover no-repeat;
+    color: var(--gold);
+    text-align: center;
+    padding: 120px 20px;
+    box-shadow: inset 0 -10px 30px rgba(0,0,0,0.6);
+}
+
+.title {
+    font-family: var(--head-font);
+    font-size: 3.8rem;
+    margin: 0 0 10px 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--bg-light);
+    font-weight: 300;
+    margin: 0;
+}
+
+.section-heading {
+    text-align: center;
+    margin: 80px 0 50px;
+}
+
+.section-title {
+    font-family: var(--head-font);
+    font-size: 2.8rem;
+    color: var(--bg-dark);
+    margin: 0 0 15px 0;
+}
+
+.divider {
+    height: 3px;
+    width: 80px;
+    background: var(--gold);
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* GRID (PRODUCTS) */
+.products-section {
+    padding: 0 5%;
+    max-width: 1400px;
+    margin: 0 auto 100px auto;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.box {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(140, 111, 78, 0.15);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.box:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 45px rgba(140, 111, 78, 0.2);
+}
+
+.img-wrapper {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.box:hover .img-wrapper img {
+    transform: scale(1.08);
+}
+
+.box h3 {
+    font-family: var(--head-font);
+    font-size: 1.6rem;
+    margin: 25px 25px 10px;
+    color: var(--bg-dark);
+}
+
+.box p {
+    margin: 0 25px 25px;
+    color: #555;
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+.btn {
+    display: block;
+    text-align: center;
+    margin: 0 25px 25px;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(140, 111, 78, 0.3);
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, var(--bg-dark), var(--primary-dark));
+    color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(140, 111, 78, 0.4);
+}
+
+/* FLEX (TESTIMONIALS) */
+.testimonials-section {
+    background: var(--bg-dark);
+    padding: 80px 5% 100px;
+    background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png');
+}
+
+.testimonials-section .section-title {
+    color: var(--gold);
+}
+
+.testimonials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.testimonial {
+    background: rgba(244, 239, 230, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    padding: 40px 30px;
+    flex: 1;
+    min-width: 300px;
+    border-radius: 12px;
+    position: relative;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.testimonial:hover {
+    transform: translateY(-8px);
+    background: rgba(244, 239, 230, 0.08);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.quote-icon {
+    font-size: 2.2rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+    opacity: 0.4;
+}
+
+.review-text {
+    color: #e2e2e2;
+    font-style: italic;
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.reviewer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: auto;
+}
+
+.reviewer img {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    object-fit: cover;
+}
+
+.reviewer span {
+    color: var(--white);
+    font-weight: 500;
+    font-family: var(--head-font);
+    font-size: 1.15rem;
+}
+
+/* FLEX (FOOTER) */
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 80px 5% 60px;
+    background: #15120f;
+    color: var(--white);
+    gap: 50px;
+}
+
+.footer-col {
+    text-align: center;
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-col i {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.footer-col h4 {
+    font-family: var(--head-font);
+    font-size: 1.4rem;
+    margin: 0 0 25px 0;
+    color: var(--primary-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-col p, .footer-col a {
+    color: #999;
+    margin-bottom: 15px;
+    text-decoration: none;
+    display: block;
+    transition: all 0.3s ease;
+    font-size: 1.05rem;
+}
+
+.footer-col a:hover {
+    color: var(--gold);
+    transform: translateX(5px);
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 768px) {
+    .page-header { padding: 80px 15px; }
+    .title { font-size: 2.5rem; }
+    .section-title { font-size: 2.2rem; }
+    .testimonials { flex-direction: column; }
+    footer { flex-direction: column; gap: 40px; }
+    .products { grid-template-columns: 1fr; }
+}

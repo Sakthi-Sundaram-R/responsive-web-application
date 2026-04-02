@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms & Conditions - Unique Antique Collection</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ===== GLOBAL ===== */
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: linear-gradient(160deg, #f0e9de 0%, #f9f4ec 40%, #ede5d8 100%);
+    font-family: 'Poppins', sans-serif;
+    color: #3e352c;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #8c6f4e;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(232, 223, 210, 0.97);
+    padding: 14px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(140,111,78,0.15);
+}
+
+.nav-brand {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-brand-icon {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #8c6f4e, #5c4d40);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f4efe6;
+    font-size: 18px;
+}
+
+.nav-brand-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #2b241e;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+}
+
+.nav-brand-text span {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: #8c6f4e;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex: 2;
+    justify-content: center;
+}
+
+nav a {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+.nav-auth {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav-btn-login {
+    background: transparent;
+    color: #5c4d40;
+    border: 2px solid rgba(140, 111, 78, 0.45);
+}
+
+.nav-btn-login:hover {
+    background: #d8cbb9;
+    color: #2b241e;
+    border-color: #8c6f4e;
+}
+
+.nav-btn-register {
+    background: linear-gradient(135deg, #2b241e, #5c4d40);
+    color: #f4efe6;
+    border: 2px solid transparent;
+}
+
+.nav-btn-register:hover {
+    background: linear-gradient(135deg, #8c6f4e, #b89c7d);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(140, 111, 78, 0.35);
+}
+
+/* ===== HEADER / BANNER ===== */
+.page-header {
+    background: linear-gradient(rgba(43, 36, 30, 0.8), rgba(43, 36, 30, 0.8)), url('https://images.unsplash.com/photo-1549429402-dd10ff3f2dc5?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    padding: 80px 20px;
+    text-align: center;
+    color: #f4efe6;
+}
+
+.page-header h1 {
+    font-size: 42px;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    color: #e8dfd2;
+}
+
+.page-header p {
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #b89c7d;
+}
+
+/* ===== CONTENT ===== */
+.content-wrapper {
+    flex: 1;
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 50px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(43,36,30,0.06);
+    border: 1px solid rgba(140,111,78,0.15);
+}
+
+.policy-block {
+    margin-bottom: 35px;
+}
+
+.policy-block h2 {
+    font-size: 24px;
+    color: #2b241e;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e8dfd2;
+    padding-bottom: 10px;
+}
+
+.policy-block p, .policy-block li {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #5c4d40;
+    margin-bottom: 15px;
+}
+
+.policy-block ul {
+    list-style-type: square;
+    padding-left: 20px;
+    color: #8c6f4e;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: linear-gradient(135deg, #2b241e 0%, #3e352c 100%);
+    display: flex;
+    justify-content: space-around;
+    padding: 60px 5%;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-col {
+    min-width: 200px;
+}
+
+.footer-col h3 {
+    margin-bottom: 25px;
+    font-size: 20px;
+    color: #e8dfd2;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 30px; height: 2px;
+    background: #8c6f4e;
+}
+
+.footer-col p, .footer-col a {
+    display: block;
+    margin-bottom: 12px;
+    color: rgba(216, 203, 185, 0.8);
+    font-size: 14px;
+    transition: color 0.3s, padding-left 0.3s;
+}
+
+.footer-col a:hover {
+    color: #b89c7d;
+    padding-left: 6px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.footer-social a {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(140,111,78,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b89c7d !important;
+    font-size: 14px;
+    transition: all 0.3s ease !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.footer-social a:hover {
+    background: #8c6f4e !important;
+    color: #fff !important;
+}
+
+.footer-bottom {
+    background: #1a1410;
+    color: rgba(184,167,146,0.8);
+    text-align: center;
+    padding: 20px 25px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    border-top: 1px solid rgba(140,111,78,0.2);
+}
+
+@media (max-width: 768px) {
+    .content-wrapper { margin: 30px 20px; padding: 30px 20px; }
+    nav { flex-direction: column; gap: 15px; padding: 20px; }
+    .nav-links { flex-direction: column; gap: 15px; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-col h3::after { left: 50%; transform: translateX(-50%); }
+    .footer-social { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <a href="main.html" class="nav-brand">
+        <div class="nav-brand-icon"><i class="fa-solid fa-landmark"></i></div>
+        <div class="nav-brand-text">Unique Antique<span>Since 1951</span></div>
+    </a>
+    <div class="nav-links">
+        <a href="main.html#home">Home</a>
+        <a href="main.html#categories">Categories</a>
+        <a href="main.html#catalogue">Catalogue</a>
+        <a href="main.html#story">Our Story</a>
+        <a href="main.html#contact">Contact</a>
+    </div>
+    <div class="nav-auth">
+        <a href="validation/login.html" class="nav-btn nav-btn-login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+        <a href="validation/register.html" class="nav-btn nav-btn-register"><i class="fa-solid fa-user-plus"></i> Register</a>
+    </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+    <h1>Terms & Conditions</h1>
+    <p>Agreements for Purchasing and Usage</p>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrapper">
+    <div class="policy-block">
+        <h2>1. Agreement to Terms</h2>
+        <p>By accessing our website and catalog, you agree to be bound by these Terms and Conditions. These terms govern your use of Unique Antique Collection and any purchases made herein.</p>
+    </div>
+    
+    <div class="policy-block">
+        <h2>2. Authenticity & Descriptions</h2>
+        <p>We take absolute pride in our authentication procedures. However, the nature of antiques implies that signs of age, including but not limited to tarnishing, small cracks, natural patina, and fading are to be expected. </p>
+        <ul>
+            <li>All dimensions and weights provided are approximate but as accurate as possible.</li>
+            <li>Photographs are taken under professional lighting; actual colors may vary slightly.</li>
+        </ul>
+    </div>
+
+    <div class="policy-block">
+        <h2>3. Pricing & Payments</h2>
+        <p>All prices listed are in Indian Rupees (INR). Prices for artifacts are subject to change without notice due to the fluctuating market for rarities.</p>
+        <ul>
+            <li>We reserve the right to refuse any order placed with us.</li>
+            <li>In the event of a pricing error, we reserve the right to cancel the order and issue a full refund in advance of processing.</li>
+        </ul>
+    </div>
+
+    <div class="policy-block">
+        <h2>4. User Accounts</h2>
+        <p>You may be required to register with the site. You agree to keep your password confidential and will be responsible for all use of your account and password. We reserve the right to remove or reclaim a username if we determine it to be inappropriate.</p>
+    </div>
+
+    <div class="policy-block">
+        <h2>5. Intellectual Property</h2>
+        <p>The website, its source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the site and the trademarks contained therein are owned or controlled by Unique Antique Collection.</p>
+    </div>
+    
+    <div class="policy-block">
+        <p><em>Last updated: April 2026</em></p>
+    </div>
+
+    <div style="text-align: center; margin-top: 50px;">
+        <a href="main.html" class="nav-btn nav-btn-register" style="padding: 12px 30px; font-size: 15px; display: inline-flex; justify-content: center;"><i class="fa-solid fa-arrow-left"></i> Return to Home</a>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-col">
+        <h3>Address</h3>
+        <p>Sardarshahar, Rajasthan</p>
+        <p>India - 331403</p>
+        <p>+91 89496 55876</p>
+    </div>
+    <div class="footer-col">
+        <h3>Useful Links</h3>
+        <a href="main.html#home">Home</a>
+        <a href="main.html#catalogue">Catalogue</a>
+        <a href="main.html#contact">Contact</a>
+    </div>
+    <div class="footer-col" id="contact">
+        <h3>Policies</h3>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="no_return_policy.html">No Return Policy</a>
+        <a href="terms_and_conditions.html">Terms & Conditions</a>
+        <div class="footer-social">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+        </div>
+    </div>
+</footer>
+<div class="footer-bottom">
+    &copy; 2026 Unique Antique Collection. All Rights Reserved.
+</div>
+
+</body>
+</html>

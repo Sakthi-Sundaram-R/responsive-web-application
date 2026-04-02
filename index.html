@@ -1,0 +1,2396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unique Antique Collection</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+
+/* ===== GLOBAL ===== */
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: linear-gradient(160deg, #f0e9de 0%, #f9f4ec 40%, #ede5d8 100%);
+    font-family: 'Poppins', sans-serif;
+    color: #3e352c;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #8c6f4e;
+}
+
+/* ===== FLOATING PARTICLES ===== */
+#particles-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.35;
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(232, 223, 210, 0.97);
+    padding: 14px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    backdrop-filter: blur(12px);
+    transition: padding 0.4s ease, box-shadow 0.4s ease;
+    border-bottom: 1px solid rgba(140,111,78,0.15);
+}
+nav.scrolled {
+    padding: 8px 30px;
+    box-shadow: 0 6px 30px rgba(43,36,30,0.15);
+    background: rgba(240, 233, 220, 0.98);
+}
+
+.nav-brand {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.nav-brand-icon {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #8c6f4e, #5c4d40);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f4efe6;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.nav-brand-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #2b241e;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+}
+
+.nav-brand-text span {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: #8c6f4e;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex: 2;
+    justify-content: center;
+}
+
+nav a {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+.nav-auth {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav-btn-login {
+    background: transparent;
+    color: #5c4d40;
+    border: 2px solid rgba(140, 111, 78, 0.45);
+}
+
+.nav-btn-login:hover {
+    background: #d8cbb9;
+    color: #2b241e;
+    border-color: #8c6f4e;
+    transform: translateY(-1px);
+}
+
+.nav-btn-register {
+    background: linear-gradient(135deg, #2b241e, #5c4d40);
+    color: #f4efe6;
+    border: 2px solid transparent;
+}
+
+.nav-btn-register:hover {
+    background: linear-gradient(135deg, #8c6f4e, #b89c7d);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(140, 111, 78, 0.35);
+}
+
+/* ===== HEADER ===== */
+header {
+    text-align: center;
+    padding: 90px 20px 50px;
+    position: relative;
+    z-index: 1;
+}
+
+header h1 {
+    font-size: 54px;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+    color: #2b241e;
+    background: linear-gradient(135deg, #2b241e 30%, #8c6f4e 60%, #b89c7d 80%, #2b241e 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+    0%   { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+header p {
+    font-size: 14px;
+    color: #8c6f4e;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* ===== DECORATIVE WAVE DIVIDER ===== */
+.wave-divider {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    margin: 0;
+}
+.wave-divider svg {
+    display: block;
+    width: 100%;
+    height: 60px;
+}
+
+/* ===== STATS BAR ===== */
+.stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    background: linear-gradient(135deg, #2b241e 0%, #4a3f35 50%, #2b241e 100%);
+    padding: 40px 5%;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+}
+.stat-item {
+    flex: 1;
+    min-width: 160px;
+    text-align: center;
+    padding: 10px 20px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+}
+.stat-item:last-child { border-right: none; }
+.stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    color: #b89c7d;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+    display: block;
+}
+.stat-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.7);
+    font-weight: 500;
+}
+
+/* ===== HERO ===== */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 80px;
+    padding: 80px 5%;
+    width: 100%;
+    max-width: 1600px;   
+    margin: 0 auto;
+}
+
+.hero-item {
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    position: relative;
+}
+
+.hero-item img {
+    width: 320px;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 160px 160px 0 0; /* Creates the arch shape */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    border: 3px solid #e8dfd2; /* Matches new2.html color scheme */
+}
+
+/* center image taller */
+.hero-item:nth-child(2) img {
+    height: 480px;
+    width: 340px;
+    border-radius: 170px 170px 0 0;
+}
+
+.hero-item:hover {
+    transform: translateY(-15px) scale(1.02);
+}
+
+.hero-item h2 {
+    margin-top: 25px;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: #8c6f4e; /* original new2.html accent */
+    font-style: italic;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.4s ease;
+}
+
+.hero-item:hover h2 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== SECTION TITLE ===== */
+.section-title {
+    text-align: center;
+    padding: 80px 20px 40px;
+    font-size: 32px;
+    letter-spacing: 2px;
+    position: relative;
+    color: #2b241e;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #8c6f4e;
+    margin: 20px auto 0;
+}
+
+/* ===== EXPLORE BY CATEGORY GRID ===== */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    padding: 0 5% 70px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.cat-card {
+    text-decoration: none;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(43,36,30,0.10);
+    transition: transform 0.35s cubic-bezier(0.25,1,0.5,1), box-shadow 0.35s ease;
+    background: #2b241e;
+    display: block;
+}
+
+.cat-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 18px 40px rgba(140,111,78,0.25);
+}
+
+.cat-img-wrap {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+}
+
+.cat-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.4s ease;
+    filter: brightness(0.88);
+}
+
+.cat-card:hover .cat-img-wrap img {
+    transform: scale(1.08);
+    filter: brightness(0.7);
+}
+
+.cat-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(0deg, rgba(43,36,30,0.92) 0%, transparent 100%);
+    color: #f4efe6;
+    padding: 28px 14px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    transition: background 0.3s ease;
+}
+
+.cat-card:hover .cat-label {
+    background: linear-gradient(0deg, rgba(140,111,78,0.95) 0%, transparent 100%);
+}
+
+@media (max-width: 1100px) {
+    .categories-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 700px) {
+    .categories-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== SHOP BY MATERIAL ===== */
+.material-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 36px;
+    padding: 0 5% 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.material-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    transition: transform 0.35s cubic-bezier(0.25,1,0.5,1);
+}
+
+.material-card:hover {
+    transform: translateY(-10px);
+}
+
+.material-img-wrap {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #e8dfd2;
+    box-shadow: 0 6px 20px rgba(43,36,30,0.12);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0;
+}
+
+.material-card:hover .material-img-wrap {
+    border-color: #8c6f4e;
+    box-shadow: 0 12px 32px rgba(140,111,78,0.3);
+}
+
+.material-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.material-card:hover .material-img-wrap img {
+    transform: scale(1.1);
+}
+
+.material-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #3e352c;
+    letter-spacing: 1px;
+    text-align: center;
+    position: relative;
+}
+
+.material-name::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #8c6f4e;
+    margin: 5px auto 0;
+    transition: width 0.3s ease;
+}
+
+.material-card:hover .material-name::after {
+    width: 100%;
+}
+
+@media (max-width: 700px) {
+    .material-grid { gap: 24px; }
+    .material-img-wrap { width: 100px; height: 100px; }
+    .material-name { font-size: 13px; }
+}
+
+
+/* ===== CATEGORY TITLE ===== */
+.category-title {
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Playfair Display', serif;
+    color: #5c4d40;
+    margin: 20px 0 30px;
+    letter-spacing: 1px;
+}
+
+.category-title::before, .category-title::after {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+    background: #a09385;
+    vertical-align: middle;
+    margin: 0 15px;
+}
+
+/* ===== PRODUCT GRID ===== */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    padding: 0 5% 80px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid rgba(140, 111, 78, 0.15); /* Soft border matching theme */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(43, 36, 30, 0.05); /* Soft baseline shadow */
+    position: relative; /* For the Sale badge */
+    overflow: hidden;
+}
+
+.onsale {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #7c634c; /* Brownish bronze from reference */
+    color: #fff;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 5;
+    pointer-events: none;
+    font-family: 'Poppins', sans-serif;
+    animation: badgePop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes badgePop {
+    from { transform: scale(0); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+.product-card img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(140, 111, 78, 0.15); /* Themed shadow on hover */
+    border-color: rgba(140, 111, 78, 0.4);
+}
+
+.product-card:hover img {
+    transform: scale(1.03);
+}
+
+.product-card h3 {
+    margin: 25px 0 10px;
+    font-size: 24px;
+    color: #3e352c;
+    line-height: 1.4;
+}
+
+.price {
+    margin: 10px 0 20px;
+    font-size: 18px;
+}
+
+.price del {
+    color: #a09385;
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+.price strong {
+    color: #8c6f4e;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+button {
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #b89c7d 0%, #8c6f4e 100%);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 14px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, #8c6f4e, #5c4d40);
+    z-index: -1;
+    transition: opacity 0.4s ease;
+    opacity: 0;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(140, 111, 78, 0.4);
+}
+
+button:hover::before {
+    opacity: 1;
+}
+
+/* ===== STORY ===== */
+.story {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    padding: 100px 5%;
+    background: #e8dfd2;
+    flex-wrap: wrap;
+}
+
+.story img {
+    width: 100%;
+    max-width: 500px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.story-text {
+    max-width: 500px;
+}
+
+.story-text h2 {
+    font-size: 38px;
+    margin-bottom: 25px;
+    color: #2b241e;
+}
+
+.story-text p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #5c4d40;
+}
+
+/* ===== TESTIMONIAL ===== */
+.testimonials {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px 5% 100px;
+    flex-wrap: wrap;
+}
+
+.testimonial {
+    background: linear-gradient(145deg, #e8dfd2, #f4efe6);
+    width: 300px;
+    border-radius: 20px;
+    padding: 36px 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 10px 40px rgba(43,36,30,0.10), inset 0 1px 0 rgba(255,255,255,0.7);
+    border: 1px solid rgba(140,111,78,0.15);
+    transition: transform 0.4s cubic-bezier(0.25,1,0.5,1), box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial::before {
+    content: '\201C';
+    position: absolute;
+    top: -10px; left: 16px;
+    font-size: 100px;
+    font-family: 'Playfair Display', serif;
+    color: rgba(140,111,78,0.12);
+    line-height: 1;
+    pointer-events: none;
+}
+
+.testimonial:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(140,111,78,0.2);
+}
+
+.testimonial-stars {
+    color: #c4973a;
+    font-size: 15px;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+}
+
+.testimonial p {
+    font-style: italic;
+    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #5c4d40;
+}
+
+.testimonial strong {
+    color: #8c6f4e;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* ===== AUTHENTIC ===== */
+.authentic {
+    background: linear-gradient(rgba(43, 36, 30, 0.85), rgba(43, 36, 30, 0.85)), url('https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?auto=format&fit=crop&w=1920&q=80') center/cover fixed no-repeat;
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+}
+
+.authentic h2 {
+    font-size: 42px;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+
+.authentic h3 {
+    color: #e8dfd2;
+    letter-spacing: 6px;
+    margin-bottom: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+.authentic p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+    color: #d8cbb9;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: linear-gradient(135deg, #2b241e 0%, #3e352c 100%);
+    display: flex;
+    justify-content: space-around;
+    padding: 80px 5%;
+    flex-wrap: wrap;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-col {
+    min-width: 200px;
+}
+
+.footer-col h3 {
+    margin-bottom: 25px;
+    font-size: 20px;
+    color: #e8dfd2;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 30px; height: 2px;
+    background: #8c6f4e;
+}
+
+.footer-col p, .footer-col a {
+    display: block;
+    margin-bottom: 12px;
+    color: rgba(216, 203, 185, 0.8);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s, padding-left 0.3s;
+}
+
+.footer-col a:hover {
+    color: #b89c7d;
+    padding-left: 6px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.footer-social a {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(140,111,78,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b89c7d !important;
+    font-size: 14px;
+    transition: all 0.3s ease !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.footer-social a:hover {
+    background: #8c6f4e !important;
+    color: #fff !important;
+    border-color: #8c6f4e !important;
+    padding-left: 0 !important;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    background: #1a1410;
+    color: rgba(184,167,146,0.8);
+    text-align: center;
+    padding: 20px 25px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    border-top: 1px solid rgba(140,111,78,0.2);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .nav-links { gap: 15px; }
+    nav a { font-size: 12px; }
+    .hero { gap: 40px; }
+    .hero-item img { width: 260px; height: 340px; }
+    .hero-item:nth-child(2) img { width: 280px; height: 400px; }
+}
+
+@media (max-width: 991px) {
+    nav { flex-wrap: wrap; padding: 15px 20px; }
+    .nav-brand { order: 1; flex: 1; min-width: 60%; }
+    .nav-auth { order: 2; flex: 1; justify-content: flex-end; }
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(140,111,78,0.15);
+        gap: 20px;
+    }
+    
+    .hero { flex-direction: row; padding: 40px 5%; gap: 20px; }
+    .hero-item { width: 32%; }
+    .hero-item img {
+        width: 100%; max-width: none; height: auto; border-radius: 200px 200px 0 0; aspect-ratio: 1 / 1.3;
+    }
+    .hero-item:nth-child(2) img {
+        width: 100%; max-width: none; height: auto; border-radius: 200px 200px 0 0; aspect-ratio: 1 / 1.45;
+    }
+    
+    .story { flex-direction: column; text-align: center; padding: 60px 5%; gap: 40px; }
+    .story img { height: auto; max-width: 100%; border-radius: 20px; }
+}
+
+@media (max-width: 768px) {
+    header h1 { font-size: 38px; }
+    header p { font-size: 11px; letter-spacing: 2px; }
+    
+    .stats-bar { padding: 30px 5%; }
+    .stat-item { min-width: 40%; border-right: none; margin-bottom: 20px; }
+    
+    .categories-grid { padding: 0 5% 40px; }
+    .products { gap: 20px; padding: 0 5% 40px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .product-card { padding: 15px; }
+    .product-card img { height: 260px; }
+    .product-card h3 { font-size: 20px; }
+    
+    .authentic h2 { font-size: 30px; letter-spacing: 2px; }
+    .authentic h3 { font-size: 18px; letter-spacing: 3px; }
+    .authentic p { font-size: 15px; }
+    
+    footer { flex-direction: column; gap: 30px; padding: 60px 10%; text-align: center; }
+    .footer-col h3::after { left: 50%; transform: translateX(-50%); }
+    .footer-social { justify-content: center; margin-top: 20px; }
+    .footer-col a:hover { padding-left: 0; transform: translateY(-3px); }
+    
+    .offer-popup { max-width: 90%; flex-direction: column; }
+    .offer-image img { min-height: 200px; height: 200px; }
+    
+    .hero { gap: 15px; }
+    .hero-item h2 { font-size: 20px; }
+}
+
+@media (max-width: 576px) {
+    nav { padding: 12px 15px; }
+    .nav-brand-icon { width: 32px; height: 32px; font-size: 16px; }
+    .nav-brand-text { font-size: 14px; }
+    .nav-btn { padding: 7px 12px; font-size: 11px; gap: 4px; }
+    .nav-btn i { font-size: 12px; }
+    .cart-nav-btn { width: 35px; height: 35px; }
+    .nav-links { gap: 10px; flex-wrap: wrap; }
+    nav a { font-size: 11px; }
+    
+    header h1 { font-size: 28px; letter-spacing: 1px; }
+    
+    .hero { gap: 10px; padding: 30px 5%; }
+    .hero-item h2 { font-size: 14px; margin-top: 15px; }
+    
+    .stat-item { min-width: 100%; margin-bottom: 25px; }
+    .stat-item:last-child { margin-bottom: 0; }
+    .stat-number { font-size: 36px; }
+    
+    .categories-grid { grid-template-columns: 1fr; gap: 20px; }
+    .cat-img-wrap { aspect-ratio: 16/9; }
+    
+    .material-grid { gap: 15px; padding: 0 5% 50px; }
+    .material-img-wrap { width: 90px; height: 90px; }
+    
+    .section-title { font-size: 22px; padding: 40px 15px 20px; }
+    
+    .story-text h2 { font-size: 26px; }
+    .story-text p { font-size: 14px; }
+    
+    .testimonials { padding: 10px 5% 50px; }
+    .testimonial { width: 100%; padding: 25px 20px; }
+    
+    .cart-drawer { width: 100%; right: -100%; }
+    .cart-drawer.open { right: 0; }
+}
+
+/* ===== OFFER POPUP ===== */
+.offer-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(43, 36, 30, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+}
+
+.offer-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.offer-popup {
+    background: linear-gradient(145deg, #f4efe6, #e8dfd2);
+    width: 90%;
+    max-width: 800px;
+    border-radius: 20px;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+    position: relative;
+    transform: scale(0.8) translateY(50px);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(140, 111, 78, 0.3);
+}
+
+.offer-overlay.active .offer-popup {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+.close-offer {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: rgba(255,255,255,0.6);
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #5c4d40;
+    z-index: 10;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    transition: all 0.3s ease;
+}
+
+.close-offer:hover {
+    background: #8c6f4e;
+    color: white;
+    transform: rotate(90deg);
+}
+
+.offer-image {
+    flex: 1;
+    position: relative;
+}
+
+.offer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 400px;
+}
+
+.offer-badge {
+    position: absolute;
+    top: 20px; left: 20px;
+    background: #8c6f4e;
+    color: white;
+    padding: 8px 15px;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: 0 5px 15px rgba(140, 111, 78, 0.4);
+}
+
+.offer-content {
+    flex: 1;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.offer-subtitle {
+    color: #8c6f4e;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.offer-title {
+    font-size: 32px;
+    color: #2b241e;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.offer-desc {
+    color: #5c4d40;
+    font-size: 15px;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.offer-price {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.offer-price del {
+    color: #a09385;
+    font-size: 18px;
+}
+
+.offer-price strong {
+    color: #a53b3b;
+    font-size: 32px;
+}
+
+.offer-timer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #2b241e;
+    margin-bottom: 30px;
+    background: rgba(140, 111, 78, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.offer-timer span.timer-label {
+    font-size: 14px;
+    margin-right: 5px;
+    font-weight: normal;
+}
+
+.time-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+}
+
+.time-block span {
+    font-size: 20px;
+    margin: 0;
+    color: #8c6f4e;
+}
+
+.time-block small {
+    font-size: 10px;
+    color: #5c4d40;
+    margin-top: 3px;
+}
+
+.offer-btn {
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #2b241e, #4a3f35);
+    color: #e8dfd2;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.offer-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(43, 36, 30, 0.4);
+    background: linear-gradient(135deg, #1a1612, #2b241e);
+}
+
+@media (max-width: 768px) {
+    .offer-popup {
+        flex-direction: column;
+        max-width: 400px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    .offer-image img {
+        min-height: 250px;
+        height: 250px;
+    }
+    .offer-content {
+        padding: 30px 20px;
+    }
+    .offer-title {
+        font-size: 26px;
+    }
+}
+
+/* ===== ANNOUNCEMENT BANNER ===== */
+.announcement-banner {
+    background: linear-gradient(135deg, #a53b3b, #8c2a2a);
+    color: #f4efe6;
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(165, 59, 59, 0.3);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.announcement-banner::before {
+    content: '✦';
+    margin-right: 15px;
+    color: #e8dfd2;
+    animation: pulse 2s infinite;
+}
+
+.announcement-banner::after {
+    content: '✦';
+    margin-left: 15px;
+    color: #e8dfd2;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0.5; transform: scale(1); }
+}
+
+.announcement-banner strong {
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-right: 5px;
+}
+
+/* ===== CATEGORY PANEL ===== */
+.cat-panel {
+    display: none;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 5% 60px;
+    animation: panelFadeIn 0.5s ease;
+}
+@keyframes panelFadeIn {
+    from { opacity:0; transform: translateY(20px); }
+    to   { opacity:1; transform: translateY(0); }
+}
+.cat-panel.active { display: block; }
+
+.cat-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0 20px;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-bottom: 2px solid rgba(140,111,78,0.2);
+    margin-bottom: 30px;
+}
+.cat-panel-header h2 {
+    font-size: 28px;
+    color: #2b241e;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.cat-panel-header h2 i { color: #8c6f4e; }
+
+.cat-close-btn {
+    background: linear-gradient(135deg, #2b241e, #5c4d40);
+    color: #e8dfd2;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    width: auto;
+}
+.cat-close-btn:hover {
+    background: linear-gradient(135deg, #8c6f4e, #b89c7d);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(140,111,78,0.35);
+}
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    animation: whatsappEntrance 0.6s ease-out forwards;
+}
+
+.whatsapp-float i {
+    font-size: 32px;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1) translateY(-5px);
+    background-color: #128c7e;
+    box-shadow: 2px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes whatsappEntrance {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+/* ===== TOP SCROLLING BANNER ===== */
+.top-banner {
+    background-color: #7c634c;
+    color: #ffffff;
+    padding: 12px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 1001;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.banner-content {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%;
+    animation: marquee 35s linear infinite;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ===== PROMO POPUP ===== */
+.promo-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(8px);
+}
+
+.promo-content {
+    background: #f4efe6;
+    padding: 50px 40px;
+    border-radius: 24px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    border: 2px solid #8c6f4e;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+    animation: popupPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popupPop {
+    from { transform: scale(0.8); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+.promo-content h2 {
+    font-size: 36px;
+    color: #2b241e;
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+}
+
+.promo-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #5c4d40;
+}
+
+.promo-code-box {
+    display: block;
+    padding: 20px;
+    background: #fdfaf5;
+    border: 2px dashed #8c6f4e;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.promo-code-label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #8c6f4e;
+    margin-bottom: 8px;
+}
+
+.promo-code-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2b241e;
+    letter-spacing: 4px;
+}
+
+.promo-close-btn {
+    background: linear-gradient(135deg, #2b241e, #5c4d40);
+    color: #fff;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.promo-close-btn:hover {
+    background: #8c6f4e;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(140,111,78,0.3);
+}
+
+.close-promo-x {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 26px;
+    color: #8c6f4e;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.close-promo-x:hover {
+    transform: rotate(90deg) scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-banner">
+    <div class="banner-content">
+        Free shipping for orders above ₹25,000 | (Sale is going on!) Use discount code <strong>UA05</strong> for an extra 5% OFF | Trusted by collectors worldwide since 1951.
+    </div>
+</div>
+
+<canvas id="particles-canvas"></canvas>
+
+<!-- NAVIGATION -->
+<nav id="mainNav">
+    <a href="#home" class="nav-brand">
+        <div class="nav-brand-icon"><i class="fa-solid fa-landmark"></i></div>
+        <div class="nav-brand-text">Unique Antique<span>Since 1951</span></div>
+    </a>
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#catalogue">Catalogue</a>
+        <a href="#story">Our Story</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-auth">
+        <button class="cart-nav-btn" onclick="openCart()" id="cartNavBtn">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <a href="validation/login.html" class="nav-btn nav-btn-login">
+            <i class="fa-solid fa-right-to-bracket"></i> Login
+        </a>
+        <a href="validation/register.html" class="nav-btn nav-btn-register">
+            <i class="fa-solid fa-user-plus"></i> Register
+        </a>
+    </div>
+</nav>
+
+<!-- HEADER -->
+<header id="home">
+    <h1>Unique Antique Collection</h1>
+    <p>A Mark of Authenticity – Since 1951</p>
+</header>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+    <div class="stat-item">
+        <span class="stat-number" data-target="75">0</span>
+        <div class="stat-label">Years of Legacy</div>
+    </div>
+    <div class="stat-item">
+        <span class="stat-number" data-target="5000">0</span>
+        <div class="stat-label">Rare Artifacts Curated</div>
+    </div>
+    <div class="stat-item">
+        <span class="stat-number" data-target="12000">0</span>
+        <div class="stat-label">Happy Collectors</div>
+    </div>
+    <div class="stat-item">
+        <span class="stat-number" data-target="100">0</span>
+        <div class="stat-label">% Authentic Guarantee</div>
+    </div>
+</div>
+
+<!-- WAVE DIVIDER (dark to light) -->
+<div class="wave-divider">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#3e352c" opacity="0.08"/>
+        <path d="M0,40 C480,10 960,55 1440,35 L1440,60 L0,60 Z" fill="#8c6f4e" opacity="0.07"/>
+    </svg>
+</div>
+
+<!-- ANNOUNCEMENT BANNER -->
+<div class="announcement-banner">
+    <strong>Huge Sale Going On!</strong> Exciting offers on rare vintage collectibles and artifacts. Limited time only.
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-item">
+        <img src="https://uniqueantiquecollection.com/wp-content/uploads/elementor/thumbs/UACHOME-left1-pgs17xpggmumyq9nyhka9o1agmqn4gxvyx8elej1y8.jpg" alt="Ethnic Antique">
+        <h2>Ethnic</h2>
+    </div>
+
+    <div class="hero-item">
+        <img src="https://uniqueantiquecollection.com/wp-content/uploads/elementor/thumbs/UACHOME-center2-pgs17mfe6mfrk02c4fd7yuprpuqftzoaiuwev1ir2g.jpg" alt="Exquisite Jewelry Box">
+        <h2>Exquisite</h2>
+    </div>
+
+    <div class="hero-item">
+        <img src="https://uniqueantiquecollection.com/wp-content/uploads/elementor/thumbs/UACHOME-right3-pgs18585zb4xjlyqqktatm4z7ppku1rqnygafm7wkg.jpg" alt="Elegant Artifact">
+        <h2>Elegant</h2>
+    </div>
+</div>
+
+<!-- EXPLORE BY CATEGORY -->
+<div id="categories" class="section-title">EXPLORE BY CATEGORY</div>
+<div class="categories-grid">
+    <a href="#categories" class="cat-card" onclick="openCat('panel-kitchen');return false;">
+        <div class="cat-img-wrap">
+            <img src="https://uniqueantiquecollection.com/wp-content/uploads/elementor/thumbs/ChatGPT-Image-Jun-30-2025-03_08_54-PM-r82blsptchwpc95g02n3ua71vw87gpb84d10ahs9l4.png" alt="Traditional Kitchen">
+        </div>
+        <div class="cat-label"><i class="fa-solid fa-utensils"></i> Vintage Traditional Kitchen</div>
+    </a>
+    <a href="#categories" class="cat-card" onclick="openCat('panel-tin');return false;">
+        <div class="cat-img-wrap">
+            <img src="https://uniqueantiquecollection.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2026-03-14-at-12.31.51-AM-2-rkgm9lqkuvmzun5tdkkz63ugj97dl6g61lom92mkqw.jpeg" alt="Tin Boxes">
+        </div>
+        <div class="cat-label"><i class="fa-solid fa-box"></i> Vintage Tin Boxes</div>
+    </a>
+    <a href="#categories" class="cat-card" onclick="openCat('panel-idols');return false;">
+        <div class="cat-img-wrap">
+            <img src="https://uniqueantiquecollection.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2026-03-14-at-12.09.55-AM-rkgl4mxsztk3ugo1ld3bzy08hp4h42tbeu3s9xd9xk.jpeg" alt="Vintage Idols">
+        </div>
+        <div class="cat-label"><i class="fa-solid fa-person-praying"></i> Vintage Idols</div>
+    </a>
+    <a href="#categories" class="cat-card" onclick="openCat('panel-paintings');return false;">
+        <div class="cat-img-wrap">
+            <img src="https://uniqueantiquecollection.com/wp-content/uploads/elementor/thumbs/IMG-20221016-WA0011-1-r3hm1kuh31hhihu73znns8gvmq6vd55s6kq9evb5oo.png" alt="Paintings">
+        </div>
+        <div class="cat-label"><i class="fa-solid fa-palette"></i> Rare Paintings</div>
+    </a>
+    <a href="#categories" class="cat-card" onclick="openCat('panel-decor');return false;">
+        <div class="cat-img-wrap">
+            <img src="https://uniqueantiquecollection.com/wp-content/uploads/elementor/thumbs/file_0000000057a461f88d23ae328358fde2-1-r672b7u9f9fjofgzlu87agrzf17e4s155ujaqcjiiw.png" alt="Decor Items">
+        </div>
+        <div class="cat-label"><i class="fa-solid fa-couch"></i> Decor Items</div>
+    </a>
+    <a href="#categories" class="cat-card" onclick="openCat('panel-antique');return false;">
+        <div class="cat-img-wrap">
+            <img src="https://uniqueantiquecollection.com/wp-content/uploads/elementor/thumbs/file_00000000f1a0622fa8ad0aa65847d2ce-r4sabaszbpcqdz56mi6qtd4tnq1zg45rqwb38olifc.png" alt="Antique">
+        </div>
+        <div class="cat-label"><i class="fa-solid fa-gem"></i> Antique Specials</div>
+    </a>
+</div>
+
+
+<!-- ===== CATEGORY PANELS (hidden, appear on card click) ===== -->
+
+<div id="panel-kitchen" class="cat-panel">
+    <div class="cat-panel-header">
+        <h2><i class="fa-solid fa-utensils"></i> Vintage Traditional Kitchen</h2>
+        <button class="cat-close-btn" onclick="closeCat('panel-kitchen')"><i class="fa-solid fa-xmark"></i> Close</button>
+    </div>
+    <div class="products">
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_00000000870871fa9f67cebc5c5c3723-500x500.png" alt="Peacock Diya Stand"><h3>Vintage Brass Peacock Diya Stand</h3><div class="price"><del>&#8377;5,500</del> <strong>&#8377;5,000</strong></div><button class="add-to-cart-btn" data-name="Vintage Brass Peacock Diya Stand" data-price="5000" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_00000000870871fa9f67cebc5c5c3723-500x500.png">Add to Cart</button></div>
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_00000000735071faad627799f3ec92c1-500x500.png" alt="Rose Water Sprinkler"><h3>Vintage Brass Rose Water Sprinkler</h3><div class="price"><del>&#8377;6,000</del> <strong>&#8377;5,400</strong></div><button class="add-to-cart-btn" data-name="Vintage Brass Rose Water Sprinkler" data-price="5400" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_00000000735071faad627799f3ec92c1-500x500.png">Add to Cart</button></div>
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_000000009fec7208aabedf92fc2ae695-500x500.png" alt="Brass Photo Frame"><h3>Vintage Brass Oval Photo Frame</h3><div class="price"><del>&#8377;8,000</del> <strong>&#8377;7,200</strong></div><button class="add-to-cart-btn" data-name="Vintage Brass Oval Photo Frame" data-price="7200" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_000000009fec7208aabedf92fc2ae695-500x500.png">Add to Cart</button></div>
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_0000000064c07208a6e96709813adffb-500x500.png" alt="6 Glass Serving Stand"><h3>Vintage Brass Miniature 6 Glass Serving Stand</h3><div class="price"><del>&#8377;6,000</del> <strong>&#8377;5,400</strong></div><button class="add-to-cart-btn" data-name="Vintage Brass Miniature 6 Glass Serving Stand" data-price="5400" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_0000000064c07208a6e96709813adffb-500x500.png">Add to Cart</button></div>
+    </div>
+</div>
+
+<div id="panel-tin" class="cat-panel">
+    <div class="cat-panel-header">
+        <h2><i class="fa-solid fa-box"></i> Vintage Tin Boxes</h2>
+        <button class="cat-close-btn" onclick="closeCat('panel-tin')"><i class="fa-solid fa-xmark"></i> Close</button>
+    </div>
+    <div class="products">
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/IMG-20260318-WA0031-500x500.jpg" alt="Bimtoni Kajal"><h3>Vintage &ldquo;Bimtoni Kajal&rdquo; Tin Box (Lady Illustration)</h3><div class="price"><del>&#8377;2,500</del> <strong>&#8377;2,100</strong></div><button class="add-to-cart-btn" data-name="Bimtoni Kajal Tin Box" data-price="2100" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/IMG-20260318-WA0031-500x500.jpg">Add to Cart</button></div>
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/01/IMG-20260111-WA0001-500x500.jpg" alt="Dalima Tin"><h3>Vintage &ldquo;Dalima&rdquo; Biscuit Tin &ndash; Countryside Artwork</h3><div class="price"><del>&#8377;4,500</del> <strong>&#8377;3,900</strong></div><button class="add-to-cart-btn" data-name="Dalima Biscuit Tin" data-price="3900" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/01/IMG-20260111-WA0001-500x500.jpg">Add to Cart</button></div>
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2024/09/IMG-20240907-WA0045-500x500.jpg" alt="Scissors Tin"><h3>Rare Vintage Scissors Cigarettes Tin</h3><div class="price"><del>&#8377;5,000</del> <strong>&#8377;4,200</strong></div><button class="add-to-cart-btn" data-name="Rare Vintage Scissors Tin" data-price="4200" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2024/09/IMG-20240907-WA0045-500x500.jpg">Add to Cart</button></div>
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2024/09/IMG-20240907-WA0053-500x500.jpg" alt="Parle Tin"><h3>Vintage Parle Gluco Biscuit Tin Box</h3><div class="price"><del>&#8377;4,000</del> <strong>&#8377;3,400</strong></div><button class="add-to-cart-btn" data-name="Parle Gluco Biscuit Tin" data-price="3400" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2024/09/IMG-20240907-WA0053-500x500.jpg">Add to Cart</button></div>
+    </div>
+</div>
+
+<div id="panel-idols" class="cat-panel">
+    <div class="cat-panel-header">
+        <h2><i class="fa-solid fa-person-praying"></i> Vintage Idols</h2>
+        <button class="cat-close-btn" onclick="closeCat('panel-idols')"><i class="fa-solid fa-xmark"></i> Close</button>
+    </div>
+    <div class="products">
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2025/12/file_00000000bc007206804df8ff50657196-800x800.png" alt="Lady Musician"><h3>Rare Antique Porcelain Lady Musician Figurine</h3><div class="price"><del>&#8377;20,500</del> <strong>&#8377;18,200</strong></div><button class="add-to-cart-btn" data-name="Rare Antique Lady Musician" data-price="18200" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2025/12/file_00000000bc007206804df8ff50657196-800x800.png">Add to Cart</button></div>
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2025/12/file_00000000f42871f6849750f79768c28a-800x800.png" alt="Radha Krishna"><h3>Rare Antique Porcelain Radha Krishna Figurine</h3><div class="price"><del>&#8377;28,500</del> <strong>&#8377;25,200</strong></div><button class="add-to-cart-btn" data-name="Porcelain Radha Krishna Idol" data-price="25200" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2025/12/file_00000000f42871f6849750f79768c28a-800x800.png">Add to Cart</button></div>
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2025/11/IMG-20251110-WA0131-500x500.png" alt="Japan Bisque Lady"><h3>Vintage Japan Bisque Lady Figurine with Lamb</h3><div class="price"><del>&#8377;7,475</del> <strong>&#8377;6,727</strong></div><button class="add-to-cart-btn" data-name="Japan Bisque Lady Figurine" data-price="6727" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2025/11/IMG-20251110-WA0131-500x500.png">Add to Cart</button></div>
+    </div>
+</div>
+
+<div id="panel-paintings" class="cat-panel">
+    <div class="cat-panel-header">
+        <h2><i class="fa-solid fa-palette"></i> Rare Paintings</h2>
+        <button class="cat-close-btn" onclick="closeCat('panel-paintings')"><i class="fa-solid fa-xmark"></i> Close</button>
+    </div>
+    <div class="products">
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/IMG-20260318-WA0037-500x500.jpg" alt="Krishna Arjun"><h3>Vintage Krishna Arjun Lithograph (Early 1900s)</h3><div class="price"><del>&#8377;18,000</del> <strong>&#8377;16,200</strong></div><button class="add-to-cart-btn" data-name="Vintage Krishna Arjun Lithograph" data-price="16200" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/IMG-20260318-WA0037-500x500.jpg">Add to Cart</button></div>
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/IMG-20260216-WA0025.jpg-2-500x500.png" alt="Ram Darbar"><h3>Antique Ravi Varma Oleograph &ndash; Ram Darbar</h3><div class="price"><del>&#8377;1,70,000</del> <strong>&#8377;1,53,000</strong></div><button class="add-to-cart-btn" data-name="Ram Darbar Oleograph" data-price="153000" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/IMG-20260216-WA0025.jpg-2-500x500.png">Add to Cart</button></div>
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2025/01/Photoroom-20250123_213240-800x800.png" alt="40 Princes Darbar"><h3>Antique Rare Indian 40 Princes Darbar Lithograph</h3><div class="price"><del>&#8377;2,50,010</del> <strong>&#8377;2,25,009</strong></div><button class="add-to-cart-btn" data-name="40 Princes Darbar Lithograph" data-price="225009" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2025/01/Photoroom-20250123_213240-800x800.png">Add to Cart</button></div>
+    </div>
+</div>
+
+<div id="panel-decor" class="cat-panel">
+    <div class="cat-panel-header">
+        <h2><i class="fa-solid fa-couch"></i> Decor Items</h2>
+        <button class="cat-close-btn" onclick="closeCat('panel-decor')"><i class="fa-solid fa-xmark"></i> Close</button>
+    </div>
+    <div class="products">
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/04/file_00000000bcfc720b8e0943cd0152060e-500x500.png" alt="Letter Rack"><h3>Vintage Iron Wall Hanging Letter Rack</h3><div class="price"><del>&#8377;7,000</del> <strong>&#8377;6,300</strong></div><button class="add-to-cart-btn" data-name="Vintage Iron Letter Rack" data-price="6300" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/04/file_00000000bcfc720b8e0943cd0152060e-500x500.png">Add to Cart</button></div>
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/04/file_000000008834720b9d0ca1bef82f82e3-500x500.png" alt="Kodak Camera"><h3>Vintage Kodak Brownie Box Camera</h3><div class="price"><del>&#8377;14,000</del> <strong>&#8377;12,600</strong></div><button class="add-to-cart-btn" data-name="Kodak Brownie Camera" data-price="12600" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/04/file_000000008834720b9d0ca1bef82f82e3-500x500.png">Add to Cart</button></div>
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_00000000964071fa8da944c829f99930-500x500.png" alt="German Lantern"><h3>Vintage German Hurricane Lantern &ndash; Original Blue Glass</h3><div class="price"><del>&#8377;7,000</del> <strong>&#8377;6,300</strong></div><button class="add-to-cart-btn" data-name="German Hurricane Lantern" data-price="6300" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_00000000964071fa8da944c829f99930-500x500.png">Add to Cart</button></div>
+    </div>
+</div>
+
+<div id="panel-antique" class="cat-panel">
+    <div class="cat-panel-header">
+        <h2><i class="fa-solid fa-gem"></i> Antique Specials</h2>
+        <button class="cat-close-btn" onclick="closeCat('panel-antique')"><i class="fa-solid fa-xmark"></i> Close</button>
+    </div>
+    <div class="products">
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/04/file_000000001f807208b6e94e9f5a638226-500x500.png" alt="Royal Trunk"><h3>Rare Antique Royal Velvet Storage Trunk</h3><div class="price"><del>&#8377;25,000</del> <strong>&#8377;22,500</strong></div><button class="add-to-cart-btn" data-name="Royal Velvet Storage Trunk" data-price="22500" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/04/file_000000001f807208b6e94e9f5a638226-500x500.png">Add to Cart</button></div>
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_00000000da84720ba9e2c8ae05ba0ca7-500x500.png" alt="Singh Siamyak Mortar"><h3>Rare 150+ Years Old Singh Siamyak Mortar</h3><div class="price"><del>&#8377;2,00,000</del> <strong>&#8377;1,80,000</strong></div><button class="add-to-cart-btn" data-name="150+ Year Old Stone Mortar" data-price="180000" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_00000000da84720ba9e2c8ae05ba0ca7-500x500.png">Add to Cart</button></div>
+    </div>
+</div>
+
+<!-- MATERIAL PANELS -->
+<div id="panel-wood" class="cat-panel">
+    <div class="cat-panel-header">
+        <h2><i class="fa-solid fa-tree"></i> Rare Wood Collection</h2>
+        <button class="cat-close-btn" onclick="closeCat('panel-wood')"><i class="fa-solid fa-xmark"></i> Close</button>
+    </div>
+    <div class="products">
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/01/file_00000000080c7206b12aef912e75f85e-500x500.png" alt="Spice Box"><h3>Vintage Wooden Spice Box (Masala Dani)</h3><div class="price"><del>&#8377;5,000</del> <strong>&#8377;4,200</strong></div><button class="add-to-cart-btn" data-name="Wooden Spice Box" data-price="4200" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/01/file_00000000080c7206b12aef912e75f85e-500x500.png">Add to Cart</button></div>
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/01/file_00000000f07c720bacaac25d8f638221-500x500.png" alt="Wooden Side Table"><h3>Antique Hand-Carved Wooden Side Table</h3><div class="price"><del>&#8377;15,000</del> <strong>&#8377;12,750</strong></div><button class="add-to-cart-btn" data-name="Hand-Carved Side Table" data-price="12750" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/01/file_00000000f07c720bacaac25d8f638221-500x500.png">Add to Cart</button></div>
+    </div>
+</div>
+
+<div id="panel-kaansa" class="cat-panel">
+    <div class="cat-panel-header">
+        <h2><i class="fa-solid fa-circle"></i> Kaansa (Bronze) Collection</h2>
+        <button class="cat-close-btn" onclick="closeCat('panel-kaansa')"><i class="fa-solid fa-xmark"></i> Close</button>
+    </div>
+    <div class="products">
+        <div class="product-card"><span class="onsale">Sale!</span>
+            <img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_000000008304720baeafda58318c1096-500x500.png" alt="Kaansa Plate">
+            <h3>Vintage kaansa very old plate for pooja</h3>
+            <div class="price"><del>&#8377;3,000</del> <strong>&#8377;2,700</strong></div>
+            <button class="add-to-cart-btn" data-name="Vintage Kaansa Pooja Plate" data-price="2700" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_000000008304720baeafda58318c1096-500x500.png">Add to Cart</button>
+        </div>
+        <div class="product-card"><span class="onsale">Sale!</span>
+            <img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/02/file_0000000012387208ac902d128d887ef5.png" alt="Kaansa Parat">
+            <h3>Vintage Kaansa Large Size Parat</h3>
+            <div class="price"><del>&#8377;8,500</del> <strong>&#8377;7,650</strong></div>
+            <button class="add-to-cart-btn" data-name="Vintage Kaansa Parat" data-price="7650" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/02/file_0000000012387208ac902d128d887ef5.png">Add to Cart</button>
+        </div>
+        <div class="product-card"><span class="onsale">Sale!</span>
+            <img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/02/file_000000006008720b9a14dc1ed5065654.png" alt="Kaansa Bowls">
+            <h3>Small Kaansa Bowls &ndash; Traditional Utensils</h3>
+            <div class="price"><del>&#8377;2,500</del> <strong>&#8377;2,100</strong></div>
+            <button class="add-to-cart-btn" data-name="Small Kaansa Bowls" data-price="2100" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/02/file_000000006008720b9a14dc1ed5065654.png">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<div id="panel-copper" class="cat-panel">
+    <div class="cat-panel-header">
+        <h2><i class="fa-solid fa-droplet"></i> Pure Copper Heritage</h2>
+        <button class="cat-close-btn" onclick="closeCat('panel-copper')"><i class="fa-solid fa-xmark"></i> Close</button>
+    </div>
+    <div class="products">
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2025/11/IMG-20251110-WA0130-500x500.png" alt="Copper Vessel"><h3>Vintage Copper Vessel (Ganga Jali)</h3><div class="price"><del>&#8377;4,500</del> <strong>&#8377;3,800</strong></div><button class="add-to-cart-btn" data-name="Copper Ganga Jali" data-price="3800" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2025/11/IMG-20251110-WA0130-500x500.png">Add to Cart</button></div>
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2025/11/IMG-20251110-WA0133-500x500.png" alt="Copper Water Pot"><h3>Antique Copper Water Pot</h3><div class="price"><del>&#8377;6,000</del> <strong>&#8377;5,100</strong></div><button class="add-to-cart-btn" data-name="Copper Water Pot" data-price="5100" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2025/11/IMG-20251110-WA0133-500x500.png">Add to Cart</button></div>
+    </div>
+</div>
+
+<div id="panel-glass" class="cat-panel">
+    <div class="cat-panel-header">
+        <h2><i class="fa-solid fa-wine-glass"></i> Antique Glassware</h2>
+        <button class="cat-close-btn" onclick="closeCat('panel-glass')"><i class="fa-solid fa-xmark"></i> Close</button>
+    </div>
+    <div class="products">
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/04/file_000000002474720ba33c5b362b256859-500x500.png" alt="Glass Decanter"><h3>Vintage Amber Glass Rooster Decanter Bottle</h3><div class="price"><del>&#8377;9,000</del> <strong>&#8377;8,100</strong></div><button class="add-to-cart-btn" data-name="Amber Glass Decanter" data-price="8100" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/04/file_000000002474720ba33c5b362b256859-500x500.png">Add to Cart</button></div>
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_00000000507471f58cbaec8c6caef81c-500x500.png" alt="Ruby Cut Glass"><h3>Antique Ruby Overlay Cut Glass Decanter</h3><div class="price"><del>&#8377;18,000</del> <strong>&#8377;16,200</strong></div><button class="add-to-cart-btn" data-name="Ruby Cut Glass Decanter" data-price="16200" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_00000000507471f58cbaec8c6caef81c-500x500.png">Add to Cart</button></div>
+    </div>
+</div>
+
+<div id="panel-brass" class="cat-panel">
+    <div class="cat-panel-header">
+        <h2><i class="fa-solid fa-sun"></i> Ornate Brass Collection</h2>
+        <button class="cat-close-btn" onclick="closeCat('panel-brass')"><i class="fa-solid fa-xmark"></i> Close</button>
+    </div>
+    <div class="products">
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_00000000870871fa9f67cebc5c5c3723-500x500.png" alt="Peacock Diya Stand"><h3>Vintage Brass Peacock Diya Stand</h3><div class="price"><del>&#8377;5,500</del> <strong>&#8377;5,000</strong></div><button class="add-to-cart-btn" data-name="Brass Peacock Diya Stand" data-price="5000" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_00000000870871fa9f67cebc5c5c3723-500x500.png">Add to Cart</button></div>
+        <div class="product-card"><span class="onsale">Sale!</span><img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_00000000735071faad627799f3ec92c1-500x500.png" alt="Rose Water Sprinkler"><h3>Vintage Brass Rose Water Sprinkler</h3><div class="price"><del>&#8377;6,000</del> <strong>&#8377;5,400</strong></div><button class="add-to-cart-btn" data-name="Brass Rose Water Sprinkler" data-price="5400" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_00000000735071faad627799f3ec92c1-500x500.png">Add to Cart</button></div>
+    </div>
+</div>
+
+<div id="panel-bronze" class="cat-panel">
+    <div class="cat-panel-header">
+        <h2><i class="fa-solid fa-shield-halved"></i> Antique Bronze Treasures</h2>
+        <button class="cat-close-btn" onclick="closeCat('panel-bronze')"><i class="fa-solid fa-xmark"></i> Close</button>
+    </div>
+    <div class="products">
+        <div class="product-card"><span class="onsale">Sale!</span>
+            <img src="https://uniqueantiquecollection.com/wp-content/uploads/2025/03/IMG-20250318-WA0048.png" alt="Dhuni Lamp">
+            <h3>Vintage Bronze Dhuni Lamp (Loban Lamp)</h3>
+            <div class="price"><del>&#8377;6,500</del> <strong>&#8377;5,850</strong></div>
+            <button class="add-to-cart-btn" data-name="Bronze Dhuni Lamp" data-price="5850" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2025/03/IMG-20250318-WA0048.png">Add to Cart</button>
+        </div>
+        <div class="product-card"><span class="onsale">Sale!</span>
+            <img src="https://uniqueantiquecollection.com/wp-content/uploads/2025/03/Photoroom-20250207_164705.png" alt="Bronze Pots">
+            <h3>Vintage Bronze 3 Pcs Pots Set</h3>
+            <div class="price"><del>&#8377;12,000</del> <strong>&#8377;10,200</strong></div>
+            <button class="add-to-cart-btn" data-name="Bronze 3 Pcs Pots Set" data-price="10200" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2025/03/Photoroom-20250207_164705.png">Add to Cart</button>
+        </div>
+        <div class="product-card"><span class="onsale">Sale!</span>
+            <img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_000000002608720b849dcee1d7b8c223.png" alt="Solid Weight Pot">
+            <h3>Vintage Bronze Solid Weight Pot</h3>
+            <div class="price"><del>&#8377;9,500</del> <strong>&#8377;8,100</strong></div>
+            <button class="add-to-cart-btn" data-name="Bronze Solid Weight Pot" data-price="8100" data-img="https://uniqueantiquecollection.com/wp-content/uploads/2026/03/file_000000002608720b849dcee1d7b8c223.png">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<!-- SHOP BY MATERIAL -->
+<div class="section-title" id="shop-by-material">SHOP BY MATERIAL</div>
+<div class="material-grid">
+
+    <div class="material-card" onclick="openCat('panel-wood')">
+        <div class="material-img-wrap"><img src="https://uniqueantiquecollection.com/wp-content/uploads/elementor/thumbs/ChatGPT-Image-Jun-21-2025-10_17_13-PM-r81xpmteafnoqkou44fvdg2gtzhxl58suof8w4ybhc.png" alt="Wood"></div>
+        <div class="material-name">Wood</div>
+    </div>
+
+    <div class="material-card" onclick="openCat('panel-tin')">
+        <div class="material-img-wrap"><img src="https://uniqueantiquecollection.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2026-03-14-at-12.31.51-AM-2-rkgm9lqkuvmzun5tdkkz63ugj97dl6g61lom92mkqw.jpeg" alt="Tin Boxes"></div>
+        <div class="material-name">Tin Boxes</div>
+    </div>
+
+    <div class="material-card" onclick="openCat('panel-paintings')">
+        <div class="material-img-wrap"><img src="https://uniqueantiquecollection.com/wp-content/uploads/elementor/thumbs/IMG-20221016-WA0011-1-r3hm1kuh31hhihu73znns8gvmq6vd55s6kq9evb5oo.png" alt="Painting"></div>
+        <div class="material-name">Painting</div>
+    </div>
+
+    <div class="material-card" onclick="openCat('panel-kaansa')">
+        <div class="material-img-wrap"><img src="https://uniqueantiquecollection.com/wp-content/uploads/elementor/thumbs/ChatGPT-Image-Jun-21-2025-09_41_03-PM-r81xq5m634df6rxj2ckerbbopox9v3bfl9gyho6g0w.png" alt="Kaansa"></div>
+        <div class="material-name">Kaansa</div>
+    </div>
+
+    <div class="material-card" onclick="openCat('panel-brass')">
+        <div class="material-img-wrap"><img src="https://uniqueantiquecollection.com/wp-content/uploads/elementor/thumbs/ChatGPT-Image-Jun-21-2025-09_41_03-PM-r81xq5m634df6rxj2ckerbbopox9v3bfl9gyho6g0w.png" alt="Brass"></div>
+        <div class="material-name">Brass</div>
+    </div>
+
+    <div class="material-card" onclick="openCat('panel-bronze')">
+        <div class="material-img-wrap"><img src="https://uniqueantiquecollection.com/wp-content/uploads/elementor/thumbs/ChatGPT-Image-Jun-21-2025-09_44_56-PM-r81xpw7s6s0jyob6l8i52dp2ru7lq4a47yy3owkdr4.png" alt="Bronze"></div>
+        <div class="material-name">Bronze</div>
+    </div>
+
+    <div class="material-card" onclick="openCat('panel-copper')">
+        <div class="material-img-wrap"><img src="https://uniqueantiquecollection.com/wp-content/uploads/elementor/thumbs/ChatGPT-Image-Jun-21-2025-09_57_59-PM-r81xq1utbs89wc2zoaxwhc9uc5ft0awi8qv0kkc0ps.png" alt="Copper"></div>
+        <div class="material-name">Copper</div>
+    </div>
+
+    <div class="material-card" onclick="openCat('panel-glass')">
+        <div class="material-img-wrap"><img src="https://uniqueantiquecollection.com/wp-content/uploads/elementor/thumbs/ChatGPT-Image-Jun-21-2025-10_06_34-PM-r81xph6d5ffyswx11203yhhp9o9qaymetwic0h6oio.png" alt="Glass"></div>
+        <div class="material-name">Glass</div>
+    </div>
+
+</div>
+
+<!-- STORY -->
+<div id="story" class="story">
+    <img src="https://m.media-amazon.com/images/I/81rcUMfV2GL._AC_UY1100_.jpg" alt="Antique Pocket Watch">
+    <div class="story-text">
+        <h2>Where Time Stands Still</h2>
+        <p>
+            Unique Antique Collection is more than an e-commerce platform. 
+            We are custodians of India's cultural heritage, curating timeless treasures since 1951. 
+            Every piece in our collection is a testament to the masterful craftsmanship and the opulent 
+            lifestyles of eras gone by. We travel the length and breadth of the country to source the most 
+            authentic, historically significant artifacts for discerning collectors.
+        </p>
+    </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="section-title reveal">TESTIMONIALS</div>
+
+<div class="testimonials">
+    <div class="testimonial reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"A stunning discovery! The quality is unmatched and delivery was prompt."</p>
+        <strong>- Barkha Jain</strong>
+    </div>
+    <div class="testimonial reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"Very tastefully curated. These artifacts added an elegant touch to my home."</p>
+        <strong>- Muskan Chaudhary</strong>
+    </div>
+    <div class="testimonial reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"Perfect for antique lovers. A truly royal experience from start to finish."</p>
+        <strong>- Jyoti K. A.</strong>
+    </div>
+</div>
+
+<!-- AUTHENTIC -->
+<div class="authentic">
+    <h2 class="reveal">AUTHENTIC & ORIGINAL</h2>
+    <h3 class="reveal">S I N C E &nbsp; 1 9 5 1</h3>
+    <p class="reveal">
+        A family-run business preserving India's rich heritage through rare collectibles. 
+        We guarantee the authenticity and provenance of every single piece in our catalog.
+    </p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-col">
+        <h3>Address</h3>
+        <p>Sardarshahar, Rajasthan</p>
+        <p>India - 331403</p>
+        <p>+91 89496 55876</p>
+    </div>
+    <div class="footer-col">
+        <h3>Useful Links</h3>
+        <a href="#home">Home</a>
+        <a href="#catalogue">Catalogue</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col" id="contact">
+        <h3>Policies</h3>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="no_return_policy.html">No Return Policy</a>
+        <a href="terms_and_conditions.html">Terms & Conditions</a>
+        <div class="footer-social">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+        </div>
+    </div>
+</footer>
+<div class="footer-bottom">
+    &copy; 2026 Unique Antique Collection. All Rights Reserved.
+</div>
+
+<!-- CART OVERLAY & DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+        <h2><i class="fa-solid fa-basket-shopping"></i> Your Cart</h2>
+        <button class="cart-close-btn" onclick="closeCart()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems">
+        <div class="cart-empty" id="cartEmpty">
+            <i class="fa-solid fa-box-open" style="font-size:48px;color:#d8cbb9;margin-bottom:16px;"></i>
+            <p>Your cart is empty.</p>
+            <span>Add items from the catalogue!</span>
+        </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+        <div class="cart-total">
+            <span>Total</span>
+            <strong id="cartTotal">₹0</strong>
+        </div>
+        <a href="validation/login.html" class="cart-proceed-btn" id="cartProceedBtn">
+            <i class="fa-solid fa-bag-shopping"></i> Proceed to Checkout
+        </a>
+        <button class="cart-clear-btn" onclick="clearCart()">
+            <i class="fa-solid fa-trash"></i> Clear Cart
+        </button>
+    </div>
+</div>
+
+<!-- TOAST NOTIFICATION -->
+<div class="cart-toast" id="cartToast"></div>
+
+<style>
+/* ===== CART NAV BUTTON ===== */
+.cart-nav-btn {
+    position: relative;
+    background: transparent;
+    border: 2px solid rgba(140,111,78,0.45);
+    color: #5c4d40;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+.cart-nav-btn:hover { background: #d8cbb9; color: #2b241e; border-color: #8c6f4e; transform: translateY(-1px); }
+.cart-badge {
+    position: absolute;
+    top: -8px; right: -8px;
+    background: #a53b3b;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    font-family: 'Poppins', sans-serif;
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.cart-badge.bump { transform: scale(1.5); }
+
+/* ===== CART OVERLAY ===== */
+.cart-overlay {
+    position: fixed; inset: 0;
+    background: rgba(43,36,30,0.55);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    opacity: 0; visibility: hidden;
+    transition: all 0.35s ease;
+}
+.cart-overlay.active { opacity: 1; visibility: visible; }
+
+/* ===== CART DRAWER ===== */
+.cart-drawer {
+    position: fixed;
+    top: 0; right: -420px;
+    width: 400px;
+    height: 100vh;
+    background: #f4efe6;
+    z-index: 2001;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -8px 0 40px rgba(43,36,30,0.2);
+    transition: right 0.4s cubic-bezier(0.25,1,0.5,1);
+}
+.cart-drawer.open { right: 0; }
+
+.cart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 24px;
+    background: #e8dfd2;
+    border-bottom: 1px solid rgba(140,111,78,0.2);
+}
+.cart-header h2 {
+    font-size: 20px;
+    color: #2b241e;
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.cart-close-btn {
+    background: none; border: none;
+    font-size: 22px; color: #5c4d40;
+    cursor: pointer; padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+.cart-close-btn:hover { background: #d8cbb9; color: #2b241e; }
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+}
+.cart-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    color: #a09385;
+}
+.cart-empty p { font-size: 17px; margin: 0 0 6px; color: #5c4d40; }
+.cart-empty span { font-size: 13px; }
+
+.cart-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 10px rgba(43,36,30,0.06);
+    border: 1px solid rgba(140,111,78,0.12);
+    animation: slideIn 0.3s ease;
+}
+@keyframes slideIn { from { opacity:0; transform: translateX(20px); } to { opacity:1; transform: translateX(0); } }
+.cart-item img {
+    width: 64px; height: 64px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+.cart-item-info { flex: 1; }
+.cart-item-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2b241e;
+    line-height: 1.4;
+    margin-bottom: 6px;
+}
+.cart-item-price {
+    font-size: 15px;
+    font-weight: 700;
+    color: #8c6f4e;
+}
+.cart-item-qty {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+.qty-btn {
+    width: 26px; height: 26px;
+    border-radius: 6px;
+    border: 1px solid #d8cbb9;
+    background: #f4efe6;
+    color: #5c4d40;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    padding: 0;
+}
+.qty-btn:hover { background: #8c6f4e; color: #fff; border-color: #8c6f4e; }
+.qty-num { font-size: 14px; font-weight: 600; color: #2b241e; min-width: 20px; text-align: center; }
+.cart-item-remove {
+    background: none; border: none;
+    color: #a09385; font-size: 16px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+.cart-item-remove:hover { color: #a53b3b; background: rgba(165,59,59,0.1); }
+
+.cart-footer {
+    padding: 20px 24px;
+    background: #e8dfd2;
+    border-top: 1px solid rgba(140,111,78,0.2);
+}
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 16px;
+    color: #5c4d40;
+}
+.cart-total strong {
+    font-size: 22px;
+    color: #2b241e;
+    font-family: 'Playfair Display', serif;
+}
+.cart-proceed-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #8c6f4e, #5c4d40);
+    color: #f4efe6;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+.cart-proceed-btn:hover { background: linear-gradient(135deg, #5c4d40, #2b241e); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(43,36,30,0.3); }
+.cart-clear-btn {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #a09385;
+    border: 1px solid #d8cbb9;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    font-family: 'Poppins', sans-serif;
+}
+.cart-clear-btn:hover { background: rgba(165,59,59,0.08); color: #a53b3b; border-color: #a53b3b; }
+
+/* ===== TOAST ===== */
+.cart-toast {
+    position: fixed;
+    bottom: 30px; left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: linear-gradient(135deg, #2b241e, #5c4d40);
+    color: #f4efe6;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 3000;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    white-space: nowrap;
+    box-shadow: 0 8px 25px rgba(43,36,30,0.3);
+    pointer-events: none;
+}
+.cart-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+@media (max-width: 480px) {
+    .cart-drawer { width: 100%; right: -100%; }
+    .cart-drawer.open { right: 0; }
+}
+</style>
+
+<script>
+// ===== PARTICLES =====
+(function(){
+    const canvas = document.getElementById('particles-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+    function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+    for(let i=0;i<55;i++) particles.push({
+        x: Math.random()*1920, y: Math.random()*1080,
+        r: Math.random()*2+0.5,
+        dx: (Math.random()-0.5)*0.3,
+        dy: (Math.random()-0.5)*0.3,
+        o: Math.random()*0.5+0.2
+    });
+    function draw(){
+        ctx.clearRect(0,0,W,H);
+        particles.forEach(p=>{
+            ctx.beginPath();
+            ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+            ctx.fillStyle = `rgba(140,111,78,${p.o})`;
+            ctx.fill();
+            p.x+=p.dx; p.y+=p.dy;
+            if(p.x<0||p.x>W) p.dx*=-1;
+            if(p.y<0||p.y>H) p.dy*=-1;
+        });
+        requestAnimationFrame(draw);
+    }
+    draw();
+})();
+
+// ===== NAV SCROLL SHRINK =====
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', ()=>{
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ===== SCROLL REVEAL =====
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+},{ threshold: 0.12 });
+revealEls.forEach(el => revealObs.observe(el));
+
+// ===== COUNTER ANIMATION =====
+const counters = document.querySelectorAll('.stat-number[data-target]');
+const counterObs = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = +el.dataset.target;
+        const duration = 1800;
+        let start = null;
+        function step(ts){
+            if(!start) start = ts;
+            const progress = Math.min((ts-start)/duration, 1);
+            const ease = 1 - Math.pow(1-progress, 3);
+            el.textContent = Math.floor(ease * target).toLocaleString('en-IN') + (target===100 ? '%' : target>=1000 ? '+' : '+');
+            if(progress < 1) requestAnimationFrame(step);
+            else el.textContent = target.toLocaleString('en-IN') + (target===100?'%':'+');
+        }
+        requestAnimationFrame(step);
+        counterObs.unobserve(el);
+    });
+},{ threshold: 0.5 });
+counters.forEach(c => counterObs.observe(c));
+
+// ===== CATEGORY PANELS =====
+function openCat(id) {
+    document.querySelectorAll('.cat-panel').forEach(p => p.classList.remove('active'));
+    var panel = document.getElementById(id);
+    if(panel) {
+        panel.classList.add('active');
+        setTimeout(function(){ panel.scrollIntoView({ behavior:'smooth', block:'start' }); }, 50);
+        // re-bind add-to-cart buttons inside panel
+        panel.querySelectorAll('.add-to-cart-btn').forEach(function(btn){
+            btn.onclick = function(){ addToCart(this.dataset.name, parseInt(this.dataset.price), this.dataset.img); };
+        });
+    }
+}
+function closeCat(id) {
+    var panel = document.getElementById(id);
+    if(panel) panel.classList.remove('active');
+}
+// ===== CART =====
+let cart = [];
+
+document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const name  = this.dataset.name;
+        const price = parseInt(this.dataset.price);
+        const img   = this.dataset.img;
+        addToCart(name, price, img);
+    });
+});
+
+function addToCart(name, price, img) {
+    const existing = cart.find(i => i.name === name);
+    if (existing) { existing.qty++; }
+    else { cart.push({ name, price, img, qty: 1 }); }
+    updateCartUI();
+    showToast('\u2714 Added: ' + name);
+    bumpBadge();
+}
+
+function removeFromCart(idx) { cart.splice(idx, 1); updateCartUI(); }
+function changeQty(idx, delta) {
+    cart[idx].qty += delta;
+    if (cart[idx].qty <= 0) cart.splice(idx, 1);
+    updateCartUI();
+}
+function clearCart() { cart = []; updateCartUI(); }
+
+function updateCartUI() {
+    const badge    = document.getElementById('cartBadge');
+    const itemsEl  = document.getElementById('cartItems');
+    const emptyEl  = document.getElementById('cartEmpty');
+    const footerEl = document.getElementById('cartFooter');
+    const totalEl  = document.getElementById('cartTotal');
+    const totalQty = cart.reduce((s,i) => s + i.qty, 0);
+    badge.textContent = totalQty;
+    if (cart.length === 0) {
+        emptyEl.style.display = 'flex';
+        footerEl.style.display = 'none';
+        itemsEl.innerHTML = '';
+        itemsEl.appendChild(emptyEl);
+    } else {
+        emptyEl.style.display = 'none';
+        footerEl.style.display = 'block';
+        const totalPrice = cart.reduce((s,i) => s + i.price * i.qty, 0);
+        totalEl.textContent = '\u20B9' + totalPrice.toLocaleString('en-IN');
+        itemsEl.innerHTML = '';
+        cart.forEach((item, idx) => {
+            const div = document.createElement('div');
+            div.className = 'cart-item';
+            div.innerHTML = `
+                <img src="${item.img}" alt="${item.name}">
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">\u20B9${item.price.toLocaleString('en-IN')}</div>
+                    <div class="cart-item-qty">
+                        <button class="qty-btn" onclick="changeQty(${idx},-1)">\u2212</button>
+                        <span class="qty-num">${item.qty}</span>
+                        <button class="qty-btn" onclick="changeQty(${idx},1)">+</button>
+                    </div>
+                </div>
+                <button class="cart-item-remove" onclick="removeFromCart(${idx})" title="Remove"><i class="fa-solid fa-xmark"></i></button>
+            `;
+            itemsEl.appendChild(div);
+        });
+    }
+}
+
+function openCart() {
+    document.getElementById('cartDrawer').classList.add('open');
+    document.getElementById('cartOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeCart() {
+    document.getElementById('cartDrawer').classList.remove('open');
+    document.getElementById('cartOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
+function showToast(msg) {
+    const t = document.getElementById('cartToast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+}
+function bumpBadge() {
+    const b = document.getElementById('cartBadge');
+    b.classList.add('bump');
+    setTimeout(() => b.classList.remove('bump'), 400);
+}
+
+// ===== OFFER POPUP =====
+document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('offerPopup');
+    if (overlay) {
+        setTimeout(function() { overlay.classList.add('active'); }, 1800);
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) overlay.classList.remove('active');
+        });
+        const closeBtn = overlay.querySelector('.close-offer');
+        if (closeBtn) closeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            overlay.classList.remove('active');
+        });
+    }
+
+    // PROMO POPUP LOGIC
+    const promoOverlay = document.getElementById('promoPopup');
+    const closePromoBtn = document.getElementById('closePromoBtn');
+    const closePromoX = document.getElementById('closePromoX');
+
+    function closePromo() {
+        promoOverlay.style.display = 'none';
+        sessionStorage.setItem('promoShown', 'true');
+    }
+
+    if (!sessionStorage.getItem('promoShown')) {
+        setTimeout(() => {
+            promoOverlay.style.display = 'flex';
+        }, 3000); // 3 seconds delay
+    }
+
+    if (closePromoBtn) closePromoBtn.addEventListener('click', closePromo);
+    if (closePromoX) closePromoX.addEventListener('click', closePromo);
+    
+    // Close on click outside
+    window.addEventListener('click', (e) => {
+        if (e.target === promoOverlay) closePromo();
+    });
+});
+</script>
+<!-- PROMO POPUP -->
+<div class="promo-overlay" id="promoPopup">
+    <div class="promo-content">
+        <span class="close-promo-x" id="closePromoX">&times;</span>
+        <h2>Special Offer!</h2>
+        <p>Unlock an exclusive discount on our rarest artifacts. Limited time offer for our valued collectors.</p>
+        <div class="promo-code-box">
+            <span class="promo-code-label">Use Discount Code</span>
+            <span class="promo-code-value">UA05</span>
+        </div>
+        <button class="promo-close-btn" id="closePromoBtn">Claim My Discount</button>
+    </div>
+</div>
+
+<a href="https://wa.me/916379850682" class="whatsapp-float" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+</body>
+</html>

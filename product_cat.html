@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product Catalogue</title>
+
+<style>
+
+/* BODY */
+body {
+    margin: 0;
+    background: #f4efe6;
+    font-family: Arial;
+}
+
+/* TITLE */
+.section-title {
+    text-align: center;
+    padding: 40px;
+    font-size: 32px;
+}
+
+/* CATEGORY */
+.category-title {
+    text-align: center;
+    font-size: 24px;
+    margin: 20px;
+}
+
+/* GRID */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+/* CARD */
+.product-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* IMAGE */
+.product-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* PRICE */
+.price del {
+    color: gray;
+}
+
+.price strong {
+    color: brown;
+    font-size: 20px;
+}
+
+/* BUTTON */
+button {
+    padding: 10px;
+    background: brown;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="section-title">PRODUCT CATALOGUE</div>
+
+<!-- Brass -->
+<div class="category-title">Brass & Copper</div>
+
+<div class="products">
+
+<div class="product-card">
+<img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/02/file_0000000052887208bc5baa0c07222f0a-1-683x1024.png">
+<h3>Vintage Brass Tea Strainer</h3>
+<div class="price"><del>₹1,350</del> <strong>₹960</strong></div>
+<button>Add to Cart</button>
+</div>
+
+<div class="product-card">
+<img src="https://uniqueantiquecollection.com/wp-content/uploads/2025/11/file_00000000c16072069a32520c27135223-768x768.png">
+<h3>Antique Brass Jewellery Box</h3>
+<div class="price"><del>₹10,000</del> <strong>₹7,000</strong></div>
+<button>Add to Cart</button>
+</div>
+
+<div class="product-card">
+<img src="https://uniqueantiquecollection.com/wp-content/uploads/2025/03/Photoroom-20250306_162514-768x1024.png">
+<h3>Vintage Copper Vessel</h3>
+<div class="price"><del>₹8,500</del> <strong>₹6,200</strong></div>
+<button>Add to Cart</button>
+</div>
+
+</div>
+
+<!-- Paintings -->
+<div class="category-title">Rare Paintings</div>
+
+<div class="products">
+
+<div class="product-card">
+<img src="https://uniqueantiquecollection.com/wp-content/uploads/2025/12/IMG-20251210-WA0105.jpg">
+<h3>Lady On Swing</h3>
+<div class="price"><del>₹150000</del> <strong>₹125000</strong></div>
+<button>Add to Cart</button>
+</div>
+
+<div class="product-card">
+<img src="https://uniqueantiquecollection.com/wp-content/uploads/2025/08/IMG-20250819-WA0036.png">
+<h3>Devalok Painting</h3>
+<div class="price"><del>₹18500</del> <strong>₹15600</strong></div>
+<button>Add to Cart</button>
+</div>
+
+</div>
+
+<!-- Kitchen -->
+<div class="category-title">Traditional Kitchen</div>
+
+<div class="products">
+
+<div class="product-card">
+<img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/02/file_0000000093b472099e7bb424008fb3ac.png">
+<h3>Brass Pooja Thali</h3>
+<div class="price"><del>₹3500</del> <strong>₹2250</strong></div>
+<button>Add to Cart</button>
+</div>
+
+<div class="product-card">
+<img src="https://uniqueantiquecollection.com/wp-content/uploads/2026/02/file_0000000070f07206b8bb4373b77e357f.png">
+<h3>Kaansa Ashtray</h3>
+<div class="price"><del>₹3000</del> <strong>₹2700</strong></div>
+<button>Add to Cart</button>
+</div>
+
+</div>
+
+</body>
+</html>

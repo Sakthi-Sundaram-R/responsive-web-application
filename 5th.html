@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <title>JavaScript DOM Example</title>
+  </head>
+  <body>
+    <h1>Form Creation with JavaScript DOM</h1>
+    <div id="formContainer"></div>
+    <div id="result"></div>
+
+    <script>
+      var form = document.createElement("form");
+      form.setAttribute("id", "userForm");
+
+      // Name
+      var nameLabel = document.createElement("label");
+      nameLabel.textContent = "Name: ";
+      form.appendChild(nameLabel);
+
+      var nameInput = document.createElement("input");
+      nameInput.setAttribute("type", "text");
+      nameInput.setAttribute("id", "name");
+      form.appendChild(nameInput);
+
+      form.appendChild(document.createElement("br"));
+
+      // Age
+      var ageLabel = document.createElement("label");
+      ageLabel.textContent = "Age: ";
+      form.appendChild(ageLabel);
+
+      var ageInput = document.createElement("input");
+      ageInput.setAttribute("type", "number");
+      ageInput.setAttribute("id", "age");
+      form.appendChild(ageInput);
+
+      form.appendChild(document.createElement("br"));
+
+      // Gender
+      var genderLabel = document.createElement("label");
+      genderLabel.textContent = "Gender: ";
+      form.appendChild(genderLabel);
+
+      // Male
+      var male = document.createElement("input");
+      male.type = "radio";
+      male.name = "gender";
+      male.value = "Male";
+      form.appendChild(male);
+      form.appendChild(document.createTextNode("Male "));
+
+      // Female
+      var female = document.createElement("input");
+      female.type = "radio";
+      female.name = "gender";
+      female.value = "Female";
+      form.appendChild(female);
+      form.appendChild(document.createTextNode("Female "));
+
+      // Others
+      var others = document.createElement("input");
+      others.type = "radio";
+      others.name = "gender";
+      others.value = "Others";
+      form.appendChild(others);
+      form.appendChild(document.createTextNode("Others"));
+
+      form.appendChild(document.createElement("br"));
+
+      // Submit Button
+      var submitButton = document.createElement("button");
+      submitButton.setAttribute("type", "button");
+      submitButton.textContent = "Submit";
+      submitButton.onclick = displayResult;
+      form.appendChild(submitButton);
+
+      document.getElementById("formContainer").appendChild(form);
+
+      function displayResult() {
+        var name = document.getElementById("name").value;
+        var age = document.getElementById("age").value;
+
+        var gender = document.querySelector('input[name="gender"]:checked');
+        gender = gender ? gender.value : "Not selected";
+
+        var resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = `
+          <h3>Entered Information:</h3>
+          <p>Name: ${name}</p>
+          <p>Age: ${age}</p>
+          <p>Gender: ${gender}</p>
+        `;
+      }
+    </script>
+  </body>
+</html>
